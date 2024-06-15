@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools</title>
+    <style>
+        body {
+            background-color: #0e1621;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1f2b3a;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+       nav {
+            background-color: #1f2b3a;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #3c4858;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            transition: width 0.3s;
+        }
+
+        .search-bar input:focus {
+            width: 400px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            border: none;
+            background-color: #3c4858;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #1f2b3a;
+        }
+
+        .tool-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tool-item {
+            background-color: #1f2b3a;
+            border-radius: 10px;
+            margin: 10px 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 80%;
+            max-width: 1000px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .tool-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .tool-details {
+            display: flex;
+            align-items: center;
+        }
+
+        .tool-details img {
+            width: 100px;
+            margin-right: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .tool-details img:hover {
+            transform: scale(1.1);
+        }
+
+        .tool-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-info h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .tool-info p {
+            margin: 10px 0;
+        }
+
+        .tool-info span {
+            color: #a3a3a3;
+        }
+
+        .tool-pricing {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin: 10px 0;
+        }
+
+        .pricing {
+            background-color: #28a745;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .price {
+            background-color: #007bff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .visit-tool {
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .visit-tool:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .tool-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tool-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tool-details img {
+                margin-bottom: 10px;
+            }
+
+            .tool-pricing {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        .login {
+            margin-right: 20px;
+        }
+
+        .login a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .login a:hover {
+            text-decoration: underline;
+        }
+
+        .about {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 28px;
+        }
+
+        .about p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="Logo">
+            <h1>AI Tools</h1>
+        </div>
+        <div class="login">
+            <a href="#login">Login</a>
+            <a href="#about">About Us</a>
+        </div>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button>Search</button>
+    </div>
+
+
+    <main>
+        <div class="tool-list">
+            <!-- Existing tools -->
+            <div class="tool-item">
+                <div class="tool-number">1</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+                    <div class="tool-info">
+                        <h2>ChatGPT</h2>
+                        <p>ChatGPT is an AI language model developed by OpenAI that can generate human-like text based on the input it receives. It is used for a variety of applications, including customer support, content creation, and more.</p>
+                        <span>#AI Text Generation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.openai.com/chatgpt" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New tools -->
+            <div class="tool-item">
+                <div class="tool-number">2</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Caffe_logo.svg" alt="Caffe">
+                    <div class="tool-info">
+                        <h2>Caffe</h2>
+                        <p>Caffe is a deep learning framework made with expression, speed, and modularity in mind. It's developed by Berkeley AI Research (BAIR) and community contributors.</p>
+                        <span>#Deep Learning Framework</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://caffe.berkeleyvision.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">3</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Character_AI_logo.svg" alt="Character AI">
+                    <div class="tool-info">
+                        <h2>Character AI</h2>
+                        <p>Character AI is a neural language model chatbot that can simulate conversations with fictional characters, famous personalities, or even create new characters.</p>
+                        <span>#AI Chatbot</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://beta.character.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">4</div>
+                <div class="tool-details">
+                    <img src="https://static.copy.ai/images/favicon.png" alt="Copy.ai">
+                    <div class="tool-info">
+                        <h2>Copy.ai</h2>
+                        <p>Copy.ai is an AI-powered writing tool that helps you create high-quality content for your business or personal needs quickly and efficiently.</p>
+                        <span>#AI Content Generation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.copy.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">5</div>
+                <div class="tool-details">
+                    <img src="https://devi.ai/images/favicon.ico" alt="Devi AI">
+                    <div class="tool-info">
+                        <h2>Devi AI</h2>
+                        <p>Devi AI is a powerful AI writing assistant that helps you generate content, improve your writing, and automate repetitive tasks.</p>
+                        <span>#AI Writing Assistant</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://devi.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">6</div>
+                <div class="tool-details">
+                    <img src="https://www.framer.com/images/meta/favicon-32x32.png" alt="Framer AI">
+                    <div class="tool-info">
+                        <h2>Framer AI</h2>
+                        <p>Framer AI is a design tool powered by AI that helps you create high-quality prototypes and designs faster and more efficiently.</p>
+                        <span>#AI Design Tool</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.framer.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">7</div>
+                <div class="tool-details">
+                    <img src="https://www.midjourney.com/favicon-32x32.png" alt="Midjourney">
+                    <div class="tool-info">
+                        <h2>Midjourney</h2>
+                        <p>Midjourney is an independent research lab that produces an artificial intelligence program of the same name that creates images from textual descriptions.</p>
+                        <span>#AI Image Generation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Subscription</span>
+                            <span class="price">$10/month</span>
+                        </div>
+                        <a href="https://www.midjourney.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">8</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" alt="TensorFlow">
+                    <div class="tool-info">
+                        <h2>TensorFlow</h2>
+                        <p>TensorFlow is an open-source platform for machine learning developed by the Google Brain team. It is used for a wide range of applications, from research to production.</p>
+                        <span>#Machine Learning Framework</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://www.tensorflow.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">9</div>
+                <div class="tool-details">
+                    <img src="https://pytorch.org/assets/images/favicon.ico" alt="PyTorch">
+                    <div class="tool-info">
+                        <h2>PyTorch</h2>
+                        <p>PyTorch is an open-source machine learning library developed by Facebook's AI Research lab. It is widely used for deep learning applications and neural network research.</p>
+                        <span>#Machine Learning Library</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://pytorch.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">10</div>
+                <div class="tool-details">
+                    <img src="https://assets.wordtune.com/images/favicon.ico" alt="Wordtune">
+                    <div class="tool-info">
+                        <h2>Wordtune</h2>
+                        <p>Wordtune is an AI-powered writing assistant that helps you rewrite and enhance your sentences to make them more compelling and engaging.</p>
+                        <span>#AI Writing Tool</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.wordtune.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">11</div>
+                <div class="tool-details">
+                    <img src="https://www.aibusiness.com/favicon.ico" alt="AI Business Tools">
+                    <div class="tool-info">
+                        <h2>AI Business Tools</h2>
+                        <p>AI Business Tools offers a range of AI-powered solutions to help businesses automate tasks, gain insights, and improve decision-making processes.</p>
+                        <span>#AI Business Solutions</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Custom Pricing</span>
+                            <span class="price">Varies</span>
+                        </div>
+                        <a href="https://www.aibusiness.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">12</div>
+                <div class="tool-details">
+                    <img src="https://cloud.google.com/automl/images/favicon.png" alt="AutoML">
+                    <div class="tool-info">
+                        <h2>AutoML</h2>
+                        <p>AutoML is a suite of machine learning tools that enables developers to build high-quality custom machine learning models with minimal effort and expertise.</p>
+                        <span>#Automated Machine Learning</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Subscription</span>
+                            <span class="price">Varies</span>
+                        </div>
+                        <a href="https://cloud.google.com/automl" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">13</div>
+                <div class="tool-details">
+                    <img src="https://assets.chatsonic.com/favicon.ico" alt="Chatsonic">
+                    <div class="tool-info">
+                        <h2>Chatsonic</h2>
+                        <p>Chatsonic is an AI chatbot platform that helps businesses create conversational experiences for their customers, enhancing customer engagement and support.</p>
+                        <span>#AI Chatbot Platform</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Subscription</span>
+                            <span class="price">Varies</span>
+                        </div>
+                        <a href="https://www.chatsonic.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">14</div>
+                <div class="tool-details">
+                    <img src="https://www.microsoft.com/en-us/cntk/images/favicon.ico" alt="Cntk">
+                    <div class="tool-info">
+                        <h2>Cntk</h2>
+                        <p>The Microsoft Cognitive Toolkit (Cntk) is an open-source toolkit for commercial-grade distributed deep learning. It supports both CNN and RNN types of neural networks.</p>
+                        <span>#Deep Learning Toolkit</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://www.microsoft.com/en-us/cntk" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">15</div>
+                <div class="tool-details">
+                    <img src="https://fireflies.ai/favicon.ico" alt="Fireflies">
+                    <div class="tool-info">
+                        <h2>Fireflies</h2>
+                        <p>Fireflies is an AI meeting assistant that helps you transcribe, take notes, and complete actions during meetings, making collaboration more efficient.</p>
+                        <span>#AI Meeting Assistant</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://fireflies.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">16</div>
+                <div class="tool-details">
+                    <img src="https://www.fliki.ai/favicon.ico" alt="Fliki">
+                    <div class="tool-info">
+                        <h2>Fliki</h2>
+                        <p>Fliki is an AI-powered tool that helps you convert text into high-quality videos with realistic voices, making content creation easier and faster.</p>
+                        <span>#AI Video Creation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Subscription</span>
+                            <span class="price">Varies</span>
+                        </div>
+                        <a href="https://www.fliki.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">17</div>
+                <div class="tool-details">
+                    <img src="https://github.com/favicon.ico" alt="GitHub Copilot">
+                    <div class="tool-info">
+                        <h2>GitHub Copilot</h2>
+                        <p>GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors by providing intelligent suggestions and autocompletions.</p>
+                        <span>#AI Code Completion</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Subscription</span>
+                            <span class="price">$10/month</span>
+                        </div>
+                        <a href="https://github.com/features/copilot" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">18</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Introduction_to_AI_logo.svg" alt="Introduction to Artificial Intelligence">
+                    <div class="tool-info">
+                        <h2>Introduction to Artificial Intelligence</h2>
+                        <p>An educational course that provides a comprehensive introduction to the field of artificial intelligence, covering its history, techniques, and applications.</p>
+                        <span>#AI Education</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Access</span>
+                        </div>
+                        <a href="https://www.introductiontoai.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">19</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+                    <div class="tool-info">
+                        <h2>ChatGPT</h2>
+                        <p>ChatGPT is an AI language model developed by OpenAI that can generate human-like text based on the input it receives. It is used for a variety of applications, including customer support, content creation, and more.</p>
+                        <span>#AI Text Generation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.openai.com/chatgpt" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">20</div>
+                <div class="tool-details">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Caffe_logo.png" alt="Caffe">
+                    <div class="tool-info">
+                        <h2>Caffe</h2>
+                        <p>Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by the Berkeley Vision and Learning Center (BVLC) and is used for image classification and segmentation.</p>
+                        <span>#Deep Learning Framework</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="http://caffe.berkeleyvision.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">21</div>
+                <div class="tool-details">
+                    <img src="https://character.ai/favicon.ico" alt="Character AI">
+                    <div class="tool-info">
+                        <h2>Character AI</h2>
+                        <p>Character AI allows users to create and interact with various AI characters, making it useful for entertainment, education, and customer service scenarios.</p>
+                        <span>#AI Character Creation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://character.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">22</div>
+                <div class="tool-details">
+                    <img src="https://copy.ai/favicon.ico" alt="Copy.ai">
+                    <div class="tool-info">
+                        <h2>Copy.ai</h2>
+                        <p>Copy.ai is an AI-powered tool designed to help businesses and individuals generate high-quality copy for various purposes, including marketing, social media, and more.</p>
+                        <span>#AI Copywriting</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.copy.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">23</div>
+                <div class="tool-details">
+                    <img src="https://devi.ai/favicon.ico" alt="Devi AI">
+                    <div class="tool-info">
+                        <h2>Devi AI</h2>
+                        <p>Devi AI offers AI-driven solutions to automate business processes, enhance customer experience, and improve operational efficiency.</p>
+                        <span>#AI Business Solutions</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Custom Pricing</span>
+                            <span class="price">Contact for Pricing</span>
+                        </div>
+                        <a href="https://devi.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">24</div>
+                <div class="tool-details">
+                    <img src="https://www.framer.com/favicon.ico" alt="Framer AI">
+                    <div class="tool-info">
+                        <h2>Framer AI</h2>
+                        <p>Framer AI is a tool that integrates AI capabilities into the Framer design platform, enabling users to create advanced, interactive designs with ease.</p>
+                        <span>#AI Design Tool</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.framer.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">25</div>
+                <div class="tool-details">
+                    <img src="https://midjourney.com/favicon.ico" alt="Midjourney">
+                    <div class="tool-info">
+                        <h2>Midjourney</h2>
+                        <p>Midjourney is an AI program that creates images from textual descriptions, similar to OpenAI's DALL-E. It can generate creative and artistic visuals from prompts given by users.</p>
+                        <span>#AI Image Generation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://www.midjourney.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">26</div>
+                <div class="tool-details">
+                    <img src="https://www.tensorflow.org/images/favicon.png" alt="TensorFlow">
+                    <div class="tool-info">
+                        <h2>TensorFlow</h2>
+                        <p>TensorFlow is an open-source machine learning framework developed by Google, used for building and deploying ML models across different platforms.</p>
+                        <span>#Machine Learning Framework</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://www.tensorflow.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">27</div>
+                <div class="tool-details">
+                    <img src="https://pytorch.org/favicon.ico" alt="PyTorch">
+                    <div class="tool-info">
+                        <h2>PyTorch</h2>
+                        <p>PyTorch is an open-source machine learning library developed by Facebook's AI Research lab, known for its flexibility and ease of use in developing deep learning models.</p>
+                        <span>#Deep Learning Library</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://pytorch.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">28</div>
+                <div class="tool-details">
+                    <img src="https://www.wordtune.com/favicon.ico" alt="Wordtune">
+                    <div class="tool-info">
+                        <h2>Wordtune</h2>
+                        <p>Wordtune is an AI-powered writing assistant that helps users rewrite, rephrase, and improve their writing by providing contextual suggestions and alternatives.</p>
+                        <span>#AI Writing Assistant</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Subscription</span>
+                        </div>
+                        <a href="https://www.wordtune.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">29</div>
+                <div class="tool-details">
+                    <img src="https://ai.business/favicon.ico" alt="AI Business Tools">
+                    <div class="tool-info">
+                        <h2>AI Business Tools</h2>
+                        <p>AI Business Tools offers a suite of AI-driven solutions designed to enhance various aspects of business operations, from analytics and decision-making to customer interactions and automation.</p>
+                        <span>#AI Business Solutions</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Custom Pricing</span>
+                            <span class="price">Contact for Pricing</span>
+                        </div>
+                        <a href="https://ai.business/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">30</div>
+                <div class="tool-details">
+                    <img src="https://automl.org/favicon.ico" alt="AutoML">
+                    <div class="tool-info">
+                        <h2>AutoML</h2>
+                        <p>AutoML provides automated machine learning solutions that enable users to build and deploy models without extensive knowledge of machine learning, streamlining the model development process.</p>
+                        <span>#Automated Machine Learning</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Custom Pricing</span>
+                            <span class="price">Contact for Pricing</span>
+                        </div>
+                        <a href="https://automl.org/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">31</div>
+                <div class="tool-details">
+                    <img src="https://chatsonic.com/favicon.ico" alt="Chatsonic">
+                    <div class="tool-info">
+                        <h2>Chatsonic</h2>
+                        <p>Chatsonic is an AI chatbot platform that provides businesses with advanced conversational AI capabilities to enhance customer support and engagement.</p>
+                        <span>#AI Chatbot</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://chatsonic.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">32</div>
+                <div class="tool-details">
+                    <img src="https://www.microsoft.com/favicon.ico" alt="Cntk">
+                    <div class="tool-info">
+                        <h2>CNTK</h2>
+                        <p>The Microsoft Cognitive Toolkit (CNTK) is an open-source toolkit for commercial-grade distributed deep learning. It provides a unified deep learning framework that supports both CPU and GPU processing.</p>
+                        <span>#Deep Learning Toolkit</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Free</span>
+                            <span class="price">Open Source</span>
+                        </div>
+                        <a href="https://www.microsoft.com/en-us/research/project/cognitive-toolkit/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">33</div>
+                <div class="tool-details">
+                    <img src="https://fireflies.ai/favicon.ico" alt="Fireflies">
+                    <div class="tool-info">
+                        <h2>Fireflies</h2>
+                        <p>Fireflies is an AI-powered meeting assistant that captures, transcribes, and analyzes voice conversations to help teams improve productivity and collaboration.</p>
+                        <span>#AI Meeting Assistant</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Subscription</span>
+                        </div>
+                        <a href="https://fireflies.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">34</div>
+                <div class="tool-details">
+                    <img src="https://fliki.ai/favicon.ico" alt="Fliki">
+                    <div class="tool-info">
+                        <h2>Fliki</h2>
+                        <p>Fliki is an AI-driven content creation tool that transforms text into videos and voiceovers, making it easy to generate engaging multimedia content for various platforms.</p>
+                        <span>#AI Content Creation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Subscription</span>
+                        </div>
+                        <a href="https://fliki.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">35</div>
+                <div class="tool-details">
+                    <img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub Copilot">
+                    <div class="tool-info">
+                        <h2>GitHub Copilot</h2>
+                        <p>GitHub Copilot is an AI-powered code completion tool developed by GitHub and OpenAI. It assists developers by providing code suggestions and completing code snippets in real-time.</p>
+                        <span>#AI Coding Assistant</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Subscription</span>
+                            <span class="price">$10/month</span>
+                        </div>
+                        <a href="https://copilot.github.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">36</div>
+                <div class="tool-details">
+                    <img src="https://introtoai.com/favicon.ico" alt="Introduction to Artificial Intelligence">
+                    <div class="tool-info">
+                        <h2>Introduction to Artificial Intelligence</h2>
+                        <p>Introduction to Artificial Intelligence is a comprehensive online course that covers the basics of AI, including machine learning, neural networks, and deep learning.</p>
+                        <span>#AI Online Course</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://introtoai.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Additional AI tools -->
+
+            <div class="tool-item">
+                <div class="tool-number">37</div>
+                <div class="tool-details">
+                    <img src="https://chatgpt.com/favicon.ico" alt="ChatGPT">
+                    <div class="tool-info">
+                        <h2>ChatGPT</h2>
+                        <p>ChatGPT is an AI-powered chatbot developed by OpenAI, capable of generating human-like text based on the input it receives, making it useful for customer support, content creation, and more.</p>
+                        <span>#AI Chatbot</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Varies</span>
+                        </div>
+                        <a href="https://chatgpt.com/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-item">
+                <div class="tool-number">38</div>
+                <div class="tool-details">
+                    <img src="https://character.ai/favicon.ico" alt="Character AI">
+                    <div class="tool-info">
+                        <h2>Character AI</h2>
+                        <p>Character AI is an AI-driven platform that allows users to create and interact with various AI characters, making it useful for entertainment, education, and customer service scenarios.</p>
+                        <span>#AI Character Creation</span>
+                        <div class="tool-pricing">
+                            <span class="pricing">Freemium</span>
+                            <span class="price">Custom Pricing</span>
+                        </div>
+                        <a href="https://character.ai/" class="visit-tool" target="_blank">Visit tool</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Ensure numbering continues sequentially -->
+
+            <!-- Adding as many as needed -->
+            <!-- ... -->
+
+        </div>
+    </main>
+
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>We provide information on a wide range of AI tools to help you find the right solutions for your needs. Our mission is to keep you updated on the latest advancements in artificial intelligence and how they can benefit your business or personal projects.</p>
+    </section>
+</body>
+</html>
